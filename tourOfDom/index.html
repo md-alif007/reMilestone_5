@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour of Dom</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <head>
+        <h1>
+            Welcome to my dom
+        </h1>
+        <main>
+            <h1>
+                This is dom test
+            </h1>
+            <ul>
+                <li>dom 1</li>
+                <li>dom 2</li>
+                <li>dom 3</li>
+            </ul>
+        </main>
+    </head>
+    <script src="js/dom.js"></script>
+    <script>
+        const liCollection = document.getElementsByTagName('li');
+
+        // console.log(liCollection);
+
+        for (const li of liCollection) {
+            console.log(li.innerText);
+            
+        }
+        
+    </script>
+</body>
+</html>
