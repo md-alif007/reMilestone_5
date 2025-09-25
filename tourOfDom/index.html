@@ -1,38 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour of Dom</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
+
     <head>
         <h1>
             Welcome to my dom
         </h1>
         <main>
-            <h1>
-                This is dom test
-            </h1>
-            <ul>
-                <li>dom 1</li>
-                <li>dom 2</li>
-                <li>dom 3</li>
-            </ul>
+
+            <section>
+                <h1>
+                    This is dom test
+                </h1>
+                <ul>
+                    <li>dom 1</li>
+                    <li>dom 2</li>
+                    <li>dom 3</li>
+                </ul>
+            </section>
+
+            <section id="fruits-container">
+                <h1 id="fruits-title">fruits</h1>
+                <ul>
+                    <li>apple </li>
+                    <li>banana</li>
+                    <li>pineapple</li>
+                    <li>jackfruit</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 id="places-title">places</h1>
+                <ul>
+                    <li class="imp-place">sea</li>
+                    <li class="imp-place">hill</li>
+                    <li class="imp-place">fountain</li>
+                    <li>jungle</li>
+                </ul>
+            </section>
+
         </main>
     </head>
-    <script src="js/dom.js"></script>
-    <script>
-        const liCollection = document.getElementsByTagName('li');
 
+    <script src="js/dom.js"></script>
+
+    <script>
+        const liCollection = document.getElementsByTagName('li'); 
         // console.log(liCollection);
 
         for (const li of liCollection) {
-            console.log(li.innerText);
+            // console.log(li.innerText);
+
+        }
+
+        const places = document.getElementsByClassName('imp-place');        
+        for (const place of places) {
+            console.log(place.innerText);
             
         }
         
+        // query selector all
+        const someli = document.querySelectorAll('#fruits-container ul li');
+        // console.log(someli);
+        for (const li of someli) {
+            console.log(li.innerText);
+            
+        }
+
     </script>
 </body>
+
 </html>
