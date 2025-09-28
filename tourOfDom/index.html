@@ -14,7 +14,7 @@
         <h1>
             Welcome to my dom
         </h1>
-        <main>
+        <main id="main-content">
 
             <section>
                 <h1>
@@ -39,7 +39,7 @@
 
             <section>
                 <h1 id="places-title">places</h1>
-                <ul>
+                <ul id="places-list">
                     <li class="imp-place">sea</li>
                     <li class="imp-place">hill</li>
                     <li class="imp-place">fountain</li>
@@ -50,7 +50,8 @@
         </main>
     </head>
 
-    <script src="js/dom.js"></script>
+    <script src="js/append.js"></script>
+    <script src="js/styleIn.js"></script>
 
     <script>
         const liCollection = document.getElementsByTagName('li'); 
@@ -63,7 +64,7 @@
 
         const places = document.getElementsByClassName('imp-place');        
         for (const place of places) {
-            console.log(place.innerText);
+            // console.log(place.innerText);
             
         }
         
@@ -71,7 +72,7 @@
         const someli = document.querySelectorAll('#fruits-container ul li');
         // console.log(someli);
         for (const li of someli) {
-            console.log(li.innerText);
+            // console.log(li.innerText);
             
         }
 
