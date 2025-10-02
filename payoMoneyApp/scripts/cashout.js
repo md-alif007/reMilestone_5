@@ -1,22 +1,22 @@
 document
-  .getElementById("add-money-btn")
+  .getElementById("cashout-btn")
   .addEventListener("click", function (event) {
     event.preventDefault();
 
-    const phoneNumber = document.getElementById("add-phone-number").value;
+    const phoneNumber = document.getElementById("out-phone-number").value;
 
-    const password = document.getElementById("add-mny-pass").value;
+    const password = document.getElementById("cashOut-mny-pass").value;
     const convertedPass = parseInt(password);
 
     const mainBalance = document.getElementById("main-balance").innerText;
     const mainConvetedBalance = parseInt(mainBalance);
 
-    const amountAdd = document.getElementById("amount-add").value;
-    const convertdAmountAdd = parseInt(amountAdd);
+    const amountCashOut = document.getElementById("amount-cashOut").value;
+    const convertdAmountCashOut = parseInt(amountCashOut);
 
     if (phoneNumber.length === 11) {
       if (convertedPass === 1234) {
-        const sum = mainConvetedBalance + convertdAmountAdd;
+        const sum = mainConvetedBalance - convertdAmountCashOut;
         document.getElementById("main-balance").innerText = sum;
       } else {
         alert("password is wrong");
