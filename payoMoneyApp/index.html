@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payoo Money App</title>
+    <!-- daisy Ui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-[#ECECBB]">
+    <section class="min-h-screen max-w-md mx-auto py-6">
+        <header>
+            <nav>
+                <div class="flex justify-center items-center relative mt-20">
+                    <img class="absolute w-48" src="./assets/bg.png" alt="" />
+                    <img class="w-16" src="./assets/Group.png" alt="" />
+                </div>
+
+                <div>
+                    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-6 ml-14 mt-12">
+                        <legend class="fieldset-legend">Login</legend>
+
+                        <label class="label">Number</label>
+                        <input id="number" type="number" class="input" placeholder="Enter your number" />
+
+                        <label class="label">Password</label>
+                        <input id="pin" type="password" class="input" placeholder="Password" />
+
+                        <button id="log-in-btn" class="btn btn-neutral mt-4">
+                            Login
+                        </button>
+                    </fieldset>
+                </div>
+            </nav>
+        </header>
+    </section>
+    <script src="./scripts/login.js"></script>
+</body>
+
+</html>

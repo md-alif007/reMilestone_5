@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main page</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-[#ECECBB]">
+    <section class="container mx-auto min-h-screen">
+        <section class="border-gray-400  border-b p-1">
+            <header>
+                <nav>
+                    <div class="flex justify-around items-center mb-3">
+                        <div>
+                            <img class="w-10" src="./assets/Group.png" alt="">
+                        </div>
+                        <div>
+                            <h1>$ <span id="main-balance" class="font-serif font-semibold">4500</span></h1>
+                            <h2 class="font-serif font-semibold">Available balance</h2>
+                        </div>
+                        <div>
+                            <button class="btn font-serif">log out</button>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </section>
+        <section class="mt-4">
+            <main>
+                <section>
+                    <div class="flex flex-col justify-center items-center">
+                        <h1 class="font-mono font-bold text-2xl">🔥 Welcome to Payooo!</h1>
+                        <p class="mt-4 text-slate-800 font-serif">
+                            Enjoy easy and convenient financial services with us. Cashout charge is low and diverse.
+                        </p>
+                    </div>
+
+                    <section class="mt-5 grid grid-cols-3 gap-3">
+                        <div
+                            class="border border-gray-500 rounded-md  p-3 flex flex-col justify-center items-center cursor-pointer hover:shadow-lg">
+                            <img src="./assets/wallet1.png" alt="">
+                            <h1 class="font-mono font-semibold">Add money</h1>
+                        </div>
+
+                        <div
+                            class="border border-gray-500 rounded-md  p-3 flex flex-col justify-center items-center cursor-pointer hover:shadow-lg">
+                            <img src="./assets/send1.png" alt="">
+                            <h1 class="font-mono font-semibold"> Cash Out</h1>
+                        </div>
+
+                        <div
+                            class="border border-gray-500 rounded-md  p-3 flex flex-col justify-center items-center cursor-pointer hover:shadow-lg">
+                            <img src="./assets/money1.png" alt="">
+                            <h1 class="font-mono font-semibold">TransferMoney</h1>
+                        </div>
+
+                        <div
+                            class="border border-gray-500 rounded-md  p-3 flex flex-col justify-center items-center cursor-pointer hover:shadow-lg">
+                            <img src="./assets/bonus1.png" alt="">
+                            <h1 class="font-mono font-semibold">Get Bonus</h1>
+                        </div>
+
+                        <div
+                            class="border border-gray-500 rounded-md  p-3 flex flex-col justify-center items-center cursor-pointer hover:shadow-lg">
+                            <img src="./assets/purse1.png" alt="">
+                            <h1 class="font-mono font-semibold">Pay Bill</h1>
+                        </div>
+
+                        <div
+                            class="border border-gray-500 rounded-md  p-3 flex flex-col justify-center items-center cursor-pointer hover:shadow-lg">
+                            <img src="./assets/transaction1.png" alt="">
+                            <h1 class="font-mono font-semibold">Transactions</h1>
+                        </div>
+                    </section>
+
+                    <section class="mt-5">
+                        <div class="mt-10">
+                            <h1 class="flex justify-center items-center font-serif font-semibold">ADD MONEY</h1>
+                        </div>
+                        <div class="hero-content flex-col lg:flex-row-reverse">
+                            <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                                <div class="card-body">
+                                    <fieldset class="fieldset">
+                                        <label class="label">Phone Number</label>
+                                        <input id="phone-number" type="number" class="input" placeholder="enter your phone number" />
+                                        <label class="label">Password</label>
+                                        <input id="add-mny-pass" type="password" class="input" placeholder="enter your Password" />
+                                        <label class="label">Amount</label>
+                                        <input id="amount-add" type="number" class="input" placeholder="enter amount" />
+                                        <div><a class="link link-hover">Forgot password?</a></div>
+                                        <button id="add-money-btn" class="btn btn-neutral mt-4">Add Money</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </section>
+            </main>
+        </section>
+    </section>
+    <script src="./scripts/addMoney.js"></script>
+</body>
+
+</html>
