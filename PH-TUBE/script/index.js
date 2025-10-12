@@ -10,7 +10,7 @@ function displayCategories(categories) {
   for (const cat of categories) {
     const categoryDiv = document.createElement("div");
     categoryDiv.innerHTML = `
-    <button onclick="loadCategoryVideos(${cat.category_id})" class="btn btn-sm hover:bg-red-400 hover:text-white">${cat.category}</button>
+    <button id="btn-${cat.category_id}" onclick="loadCategoryVideos(${cat.category_id})" class="btn btn-sm hover:bg-red-400 hover:text-white">${cat.category}</button>
     `;
     categoryContainer.appendChild(categoryDiv);
   }
@@ -24,6 +24,17 @@ const loadVideos = () => {
 
 const displayVideos = (video) => {
   const videoContainer = document.getElementById("video-container");
+
+  if (video.length== 0) {
+    videoContainer.innerHTML =
+    `
+    <div class="mt-14 flex flex-col items-center justify-center col-span-full">
+                <img class="w-26" src="./assets/Icon.png" alt="">
+                <p class="mt-5 font-serif text-2xl">Oops!! Sorry, There is no content here . Click the categories to load videos .</p>
+      </div>
+    `;
+    return;
+  }
 
   videoContainer.innerHTML = "";
   video.forEach((video) => {
@@ -62,7 +73,11 @@ const loadCategoryVideos = (id) => {
 
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayVideos(data.category));
+    .then((data) => {
+      const activeBtn = document.getElementById(`btn-${id}`);
+      activeBtn.classList.add("active");
+      displayVideos(data.category);
+    });
 };
 
 loadCategories();
