@@ -1,3 +1,10 @@
+const removeActiveClass = () => {
+  const allActiveButtons = document.getElementsByClassName("active");
+  for (const btn of allActiveButtons) {
+    btn.classList.remove("active");
+  }
+};
+
 function loadCategories() {
   fetch("https://openapi.programming-hero.com/api/phero-tube/categories")
     .then((res) => res.json())
@@ -25,9 +32,8 @@ const loadVideos = () => {
 const displayVideos = (video) => {
   const videoContainer = document.getElementById("video-container");
 
-  if (video.length== 0) {
-    videoContainer.innerHTML =
-    `
+  if (video.length == 0) {
+    videoContainer.innerHTML = `
     <div class="mt-14 flex flex-col items-center justify-center col-span-full">
                 <img class="w-26" src="./assets/Icon.png" alt="">
                 <p class="mt-5 font-serif text-2xl">Oops!! Sorry, There is no content here . Click the categories to load videos .</p>
@@ -74,6 +80,7 @@ const loadCategoryVideos = (id) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
+      removeActiveClass();
       const activeBtn = document.getElementById(`btn-${id}`);
       activeBtn.classList.add("active");
       displayVideos(data.category);
