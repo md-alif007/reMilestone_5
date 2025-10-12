@@ -27,11 +27,18 @@
         </nav>
     </header>
 
-    <nav id="category-container" class="mt-3 py-3 flex justify-center items-center">
+    <nav id="category-container" class="mt-3 py-3 flex justify-center items-center gap-2">
 
-        <button class="btn btn-sm">All</button>
+        <div>
+            <button onclick="loadVideos()" class="btn btn-sm bg-red-400 text-white">All</button>
+        </div>
 
     </nav>
+
+    <section class="w-11/12 mx-auto grid grid-cols-4 gap-3" id="video-container">
+
+        
+    </section>
 
 
     <script src="./script/index.js"></script>
