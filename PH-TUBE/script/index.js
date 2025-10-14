@@ -1,3 +1,15 @@
+const showLoader = () => {
+  document.getElementById("loader").classList.remove("hidden");
+
+  document.getElementById("video-container").classList.add("hidden");
+};
+
+const hideLoader = () => {
+  document.getElementById("loader").classList.add("hidden");
+
+  document.getElementById("video-container").classList.remove("hidden");
+};
+
 const removeActiveClass = () => {
   const allActiveButtons = document.getElementsByClassName("active");
   for (const btn of allActiveButtons) {
@@ -24,7 +36,10 @@ function displayCategories(categories) {
 }
 
 const loadVideos = (searchText = "") => {
-  fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchText}`)
+  showLoader();
+  fetch(
+    `https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchText}`
+  )
     .then((res) => res.json())
     .then((data) => displayVideos(data.videos));
 };
@@ -39,6 +54,7 @@ const displayVideos = (video) => {
                 <p class="mt-5 font-serif text-2xl">Oops!! Sorry, There is no content here . Click the categories to load videos .</p>
       </div>
     `;
+    hideLoader();
     return;
   }
 
@@ -48,7 +64,9 @@ const displayVideos = (video) => {
     videoDiv.innerHTML = `
        <div class="shadow-sm rounded-sm ">
             <figure>
-                <img class="rounded-t-sm w-[312px] h-[200px] object-cover" src="${video.thumbnail}" alt="Shoes" />
+                <img class="rounded-t-sm w-[312px] h-[200px] object-cover" src="${
+                  video.thumbnail
+                }" alt="Shoes" />
             </figure>
             <div class="mt-4 flex gap-5 px-2">
                 <div class="avatar">
@@ -57,26 +75,37 @@ const displayVideos = (video) => {
                     </div>
                 </div>
                 <div>
-                    <p class="font-serif font-semibold text-sm">${video.title}</p>
+                    <p class="font-serif font-semibold text-sm">${
+                      video.title
+                    }</p>
                     <p class="font-mono font-thin text-gray-600 flex gap-3 items-center ">
                         ${video.authors[0].profile_name}
-                        ${video.authors[0].verified == true ? 
-                          `<span>
+                        ${
+                          video.authors[0].verified == true
+                            ? `<span>
                             <img class="w-4"
                                 src="https://img.icons8.com/?size=100&id=98A4yZTt9abw&format=png&color=000000" alt="">
-                        </span>` : `` }
+                        </span>`
+                            : ``
+                        }
                     </p>
-                    <p class="font-mono font-thin text-gray-600">${video.others.views} views</p>
+                    <p class="font-mono font-thin text-gray-600">${
+                      video.others.views
+                    } views</p>
                 </div>
             </div>
-            <button onclick="loadVideoDetails('${video.video_id}')" class="btn btn-block">Show details</button>
+            <button onclick="loadVideoDetails('${
+              video.video_id
+            }')" class="btn btn-block">Show details</button>
        </div>
     `;
     videoContainer.appendChild(videoDiv);
   });
+  hideLoader();
 };
 
 const loadCategoryVideos = (id) => {
+  showLoader();
   const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
 
   fetch(url)
@@ -103,10 +132,9 @@ const displayVideoDetails = (video) => {
   console.log(video);
   document.getElementById("video_details").showModal();
 
-  const detailsContainer = document.getElementById('details-container');
+  const detailsContainer = document.getElementById("details-container");
 
-  detailsContainer.innerHTML =  
-  `
+  detailsContainer.innerHTML = `
   <div class="card bg-base-100 image-full  shadow-sm">
     <figure>
       <img
@@ -119,14 +147,13 @@ const displayVideoDetails = (video) => {
       </p>      
     </div>
   </div>
-  `
+  `;
+};
 
-}
-
-document.getElementById('search-input').addEventListener('keyup', (event) => {
+document.getElementById("search-input").addEventListener("keyup", (event) => {
   const input = event.target.value;
   loadVideos(input);
-})
+});
 
 loadCategories();
 
