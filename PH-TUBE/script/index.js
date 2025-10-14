@@ -60,14 +60,16 @@ const displayVideos = (video) => {
                     <p class="font-serif font-semibold text-sm">${video.title}</p>
                     <p class="font-mono font-thin text-gray-600 flex gap-3 items-center ">
                         ${video.authors[0].profile_name}
-                        <span>
+                        ${video.authors[0].verified == true ? 
+                          `<span>
                             <img class="w-4"
                                 src="https://img.icons8.com/?size=100&id=98A4yZTt9abw&format=png&color=000000" alt="">
-                        </span>
+                        </span>` : `` }
                     </p>
                     <p class="font-mono font-thin text-gray-600">${video.others.views} views</p>
                 </div>
             </div>
+            <button onclick="loadVideoDetails('${video.video_id}')" class="btn btn-block">Show details</button>
        </div>
     `;
     videoContainer.appendChild(videoDiv);
@@ -86,6 +88,42 @@ const loadCategoryVideos = (id) => {
       displayVideos(data.category);
     });
 };
+
+const loadVideoDetails = (VideoId) => {
+  console.log(VideoId);
+
+  const url = `https://openapi.programming-hero.com/api/phero-tube/video/${VideoId}`;
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayVideoDetails(data.video));
+};
+
+const displayVideoDetails = (video) => {
+  console.log(video);
+  document.getElementById("video_details").showModal();
+
+  const detailsContainer = document.getElementById('details-container');
+
+  detailsContainer.innerHTML =  
+  `
+  <div class="card bg-base-100 image-full  shadow-sm">
+    <figure>
+      <img
+        src="${video.thumbnail}"
+        alt="Shoes" />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">${video.title}</h2>
+      <p class = "font-mono ">${video.description}
+      </p>      
+    </div>
+  </div>
+  `
+
+}
+
+document.getElementById('search-input').addEventListener('keyup')
 
 loadCategories();
 
