@@ -23,8 +23,8 @@ function displayCategories(categories) {
   }
 }
 
-const loadVideos = () => {
-  fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+const loadVideos = (searchText = "") => {
+  fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchText}`)
     .then((res) => res.json())
     .then((data) => displayVideos(data.videos));
 };
@@ -123,7 +123,10 @@ const displayVideoDetails = (video) => {
 
 }
 
-document.getElementById('search-input').addEventListener('keyup')
+document.getElementById('search-input').addEventListener('keyup', (event) => {
+  const input = event.target.value;
+  loadVideos(input);
+})
 
 loadCategories();
 
